@@ -80,6 +80,12 @@
   .in .b2{animation-delay:.5s} .in .b3{animation-delay:1s} .in .b4{animation-delay:1.5s}
   @keyframes pop{to{opacity:1;transform:none}}
 
+  .ph{opacity:0;transform:translateY(18px)}
+  .in .pA{animation:pop .7s cubic-bezier(.16,1,.3,1) .1s forwards}
+  .in .pB{animation:pop .7s cubic-bezier(.16,1,.3,1) .75s forwards}
+  .arw{opacity:0}
+  .in .arw{animation:pop .5s ease .58s forwards}
+
   .pb{width:0}
   .in .p1{animation:grow1 1.1s cubic-bezier(.16,1,.3,1) .15s forwards}
   .in .p2{animation:grow2 1.1s cubic-bezier(.16,1,.3,1) .3s forwards}
@@ -216,7 +222,7 @@
       </svg>
     </div>
     <h2 class="say">One tap.</h2>
-    <div class="tick">no app &middot; no qr &middot; no typing</div>
+    <div class="tick">no app &middot; no qr &middot; no battery &middot; works in a power cut</div>
   </section>
 
   <!-- TEN -->
@@ -247,6 +253,49 @@
     <div class="tick" id="chooseTick">most shops start at $10 and drop to $5 once it catches on</div>
   </section>
 
+  <!-- THE ORDER, SHOWN -->
+  <section class="scene">
+    <div class="art">
+      <svg width="360" height="250" viewBox="0 0 360 250" role="img"
+           aria-label="Two phone screens: first a free review request, then a separate discount offer">
+        <g class="ph pA">
+          <rect x="6" y="18" width="150" height="214" rx="22" fill="#15100D"/>
+          <rect x="14" y="26" width="134" height="198" rx="16" fill="#FCFAF8"/>
+          <circle cx="81" cy="70" r="20" fill="#F2A03D"/>
+          <path d="M72 70 l6 7 12 -14" stroke="#fff" stroke-width="5" fill="none"
+                stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="34" y="104" width="94" height="9" rx="4.5" fill="#2A2320"/>
+          <rect x="46" y="122" width="70" height="7" rx="3.5" fill="#9C9088"/>
+          <g fill="#F2A03D">
+            <circle cx="48" cy="152" r="6"/><circle cx="65" cy="152" r="6"/><circle cx="82" cy="152" r="6"/>
+            <circle cx="99" cy="152" r="6"/><circle cx="116" cy="152" r="6"/>
+          </g>
+          <rect x="34" y="180" width="94" height="26" rx="13" fill="#1FA971"/>
+          <text x="81" y="198" text-anchor="middle" font-family="Nunito,sans-serif"
+                font-size="12" font-weight="800" fill="#fff">free</text>
+        </g>
+        <path class="arw" d="M170 125 h22" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+        <path class="arw" d="M186 118 l8 7 -8 7" stroke="#fff" stroke-width="4" fill="none"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <g class="ph pB">
+          <rect x="204" y="18" width="150" height="214" rx="22" fill="#15100D"/>
+          <rect x="212" y="26" width="134" height="198" rx="16" fill="#FCFAF8"/>
+          <text x="279" y="80" text-anchor="middle" font-family="Nunito,sans-serif"
+                font-size="34" font-weight="900" fill="#E4571C" data-amt>$10</text>
+          <rect x="232" y="100" width="94" height="9" rx="4.5" fill="#2A2320"/>
+          <rect x="232" y="122" width="94" height="24" rx="8" fill="#EFEAE5"/>
+          <rect x="232" y="156" width="12" height="12" rx="3" fill="#fff" stroke="#B9ADA4" stroke-width="2"/>
+          <rect x="250" y="158" width="66" height="6" rx="3" fill="#9C9088"/>
+          <rect x="232" y="182" width="94" height="26" rx="13" fill="#E4571C"/>
+          <text x="279" y="200" text-anchor="middle" font-family="Nunito,sans-serif"
+                font-size="12" font-weight="800" fill="#fff">send code</text>
+        </g>
+      </svg>
+    </div>
+    <h2 class="say">Free first. Paid second.</h2>
+    <div class="tick">the review costs nothing &middot; the discount buys only the contact</div>
+  </section>
+
   <!-- THE NUMBER -->
   <section class="scene">
     <div class="art">
@@ -260,14 +309,14 @@
       </svg>
     </div>
     <h2 class="say">You get the number.</h2>
-    <div class="tick">texts &middot; email &middot; wifi surveys</div>
+    <div class="tick">a review is a deposit &middot; a number is an account</div>
   </section>
 
   <!-- OWN -->
   <section class="scene">
     <div class="art"><div class="count" id="count">0</div></div>
     <h2 class="say">Customers you own.</h2>
-    <div class="tick">not rented back from google</div>
+    <div class="tick">google rents you the customer once &middot; a number is yours until they say stop</div>
   </section>
 
   <!-- THREE FREE -->
@@ -416,9 +465,9 @@
         </div>
         <div class="plan">
           <div class="lbl">the whole thing</div>
-          <div class="p">Managed</div>
-          <div class="lbl">we run it</div>
-          <ul><li>We write and send the texts</li><li>Email campaigns handled</li><li>Wifi surveys feeding your ads</li><li>You just serve customers</li></ul>
+          <div class="p">$49<span style="font-size:.4em;font-weight:800">/mo</span></div>
+          <div class="lbl">per location &middot; we run it</div>
+          <ul><li>We write and send the texts</li><li>Email campaigns handled</li><li>Wifi surveys feeding your ads</li><li>You just serve customers</li><li>Cheapest real system going &mdash; NiceJob is $75</li></ul>
         </div>
       </div>
     </div>
@@ -629,13 +678,18 @@ void main(){vec2 uv=gl_FragCoord.xy/uRes; vec2 p=uv; p.x*=uRes.x/uRes.y;\n\
   var uRes=U('uRes'),uTime=U('uTime'),uMouse=U('uMouse'),uA=U('uA'),uB=U('uB'),uC=U('uC');
 
   // every colour is Rosco's own orange -- temperature shifts, hue does not
+  // Orange owns the hero and the close; the middle travels through the product's own
+  // colourways (teal, forest, charcoal, burgundy) so the page changes without going
+  // off-brand. Every stop stays deep enough that white type holds contrast.
   var PAL=[
-    [[1.00,0.42,0.10],[1.00,0.64,0.28],[0.52,0.17,0.02]],
-    [[1.00,0.48,0.12],[1.00,0.72,0.38],[0.46,0.15,0.02]],
-    [[0.95,0.38,0.08],[1.00,0.58,0.22],[0.38,0.12,0.02]],
-    [[0.86,0.32,0.06],[0.99,0.52,0.18],[0.30,0.10,0.02]],
-    [[0.72,0.26,0.05],[0.94,0.44,0.13],[0.20,0.08,0.03]],
-    [[1.00,0.44,0.11],[1.00,0.70,0.36],[0.50,0.16,0.02]]
+    [[1.00,0.42,0.10],[1.00,0.64,0.28],[0.52,0.17,0.02]],  // hero    orange
+    [[1.00,0.48,0.12],[1.00,0.72,0.38],[0.46,0.15,0.02]],  // tap     orange, open
+    [[0.05,0.42,0.45],[0.13,0.64,0.63],[0.02,0.19,0.23]],  // offer   deep teal
+    [[0.09,0.36,0.24],[0.21,0.57,0.37],[0.03,0.15,0.10]],  // number  forest
+    [[0.16,0.16,0.18],[0.31,0.31,0.34],[0.06,0.06,0.09]],  // proof   charcoal
+    [[0.34,0.08,0.16],[0.56,0.17,0.27],[0.15,0.03,0.07]],  // kit     burgundy
+    [[0.86,0.32,0.06],[0.99,0.52,0.18],[0.30,0.10,0.02]],  // custom  burnt orange
+    [[1.00,0.44,0.11],[1.00,0.70,0.36],[0.50,0.16,0.02]]   // close   full orange
   ];
   var cur=[PAL[0][0].slice(),PAL[0][1].slice(),PAL[0][2].slice()];
   var ms=[0,0],mt=[0,0],t0=performance.now();
