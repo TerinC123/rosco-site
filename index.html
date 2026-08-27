@@ -36,11 +36,14 @@
   .hero{min-height:100vh;gap:18px}
   .roscoWrap{position:relative;width:min(52vw,320px);margin:0 auto;will-change:transform}
   #rosco{width:100%;height:auto;display:block;filter:drop-shadow(0 34px 54px rgba(90,25,0,.34))}
-  .lockup{position:absolute;left:19%;top:67%;display:flex;align-items:baseline;gap:.28em;
-    pointer-events:none;color:#fff;
-    text-shadow:0 1px 0 rgba(255,255,255,.45),0 -1px 1px rgba(120,40,0,.35)}
-  .lockup .a{font-size:clamp(19px,4.4vw,29px);font-weight:800;letter-spacing:-.015em;line-height:1}
-  .lockup .b{font-size:.42em;font-weight:600;letter-spacing:.02em;line-height:1;opacity:.92}
+  /* Two-line lockup: "rave" with a smaller, indented "reviews" beneath it.
+     Real text over the unbranded plate -- crisper than embossing it into the render. */
+  .lockup{position:absolute;left:20.5%;top:60%;display:flex;flex-direction:column;
+    align-items:flex-start;pointer-events:none;color:#fff;
+    text-shadow:0 1px 0 rgba(255,255,255,.42),0 -1px 1px rgba(120,40,0,.30)}
+  .lockup .a{font-size:clamp(22px,5.1vw,34px);font-weight:800;letter-spacing:-.028em;line-height:.92}
+  .lockup .b{font-size:.44em;font-weight:700;letter-spacing:-.005em;line-height:1;
+    margin-left:.9em;margin-top:.16em;opacity:.95}
   h1{font-size:clamp(40px,8.6vw,88px);font-weight:900;letter-spacing:-.038em;line-height:.98;
     margin:14px 0 0;text-wrap:balance}
 
@@ -97,7 +100,7 @@
     background:rgba(20,10,4,0);backdrop-filter:blur(0px);transition:background .4s ease,backdrop-filter .4s ease}
   nav.stuck{background:rgba(26,12,4,.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
   nav .brand{display:flex;align-items:baseline;gap:.3em;font-weight:900;font-size:19px;letter-spacing:-.02em}
-  nav .brand i{font-style:normal;font-size:.5em;font-weight:600;opacity:.85}
+  nav .brand i{font-style:normal;font-size:.52em;font-weight:700;opacity:.9;letter-spacing:-.005em}
   nav .navcta{background:#fff;color:#C0400A;border:0;border-radius:999px;font:inherit;font-weight:900;
     font-size:13px;padding:11px 20px;cursor:pointer}
   nav .navcta:hover{background:#15100D;color:#fff}
